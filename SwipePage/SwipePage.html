@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Swipe Page</title>
 	<style>
 		/* REMOVE BELOW*/
@@ -37,24 +38,37 @@
 			margin: auto;
 		}
 
+		@keyframes wobble {			
+			100% { transform: rotate(3deg); }
+		}
+
 		.swipableCard {
 			position: absolute;
 			background-color: white;
+			border-radius: 15px;
+			box-shadow: 0px 0px 15px rgb(150, 150, 150);
+			transform: rotate(-3deg);
+
+			/*
+			animation-name: wobble;
+			animation-duration: 3s;
+			animation-direction: alternate;
+  			animation-iteration-count: infinite;
+  			animation-timing-function: ease-in-out;
+  			transition: 1s all ease-out;
+  			*/
 		}
 
 		.card {
 			width: 350px;
 			height: 550px;
-			box-shadow: 0px 0px 15px rgb(150, 150, 150);
 			padding-top: 5px;
-			border-radius: 15px;
-
 		}
 
 		.roundedImage {
 			width: 200px;
 			height: 200px;
-			border-radius: 100px;
+			border-radius: 200px;
 			border: 4px solid lightgray;
 			overflow: hidden;
 			margin: 30px auto 0px auto;
@@ -62,8 +76,8 @@
 		}
 
 		.friendImage {
-			position: relative;
-			left: -25px;
+			width: 200px;
+			height: 200px;
 		}
 
 		.genderSymbol {
@@ -89,46 +103,58 @@
 			padding: 0px 50px;
 		}
 
+		.interativeElement:hover {
+			transform: scale(1.1);
+			background-color: pink;
+		}
+
 		.button {
-			margin: 30px 20px;
+			margin: 30px 50px;
 			font-family: Helvetica, sans-serif;
-			font-size: 15px;
-			border-radius: 8px;
+			font-weight: bold;
+			font-size: 25px;
+			border-radius: 30px;
+			box-shadow: 0px 0px 10px rgb(220, 220, 220);
+			background-color: white;
 			display: inline-block;
-			width: 100px;
-			height: 40px;
+			width: 60px;
+			height: 60px;
 			vertical-align: top;
 			border-style: none;
 			color: white;
+			cursor: pointer;
+			transition: 0.17s all ease-in-out;
+			
 		}
 
-		.likeButton {
-			background-color: pink;
-			border: 3px solid;
-			border-color: rgb(255, 200, 220);
-		}
-
-		.dislikeButton {
-			background-color: blue;
-			border: 3px solid;
-			border-color: rgb(105, 207, 246);
+		#dislikeButton {
+			font-size: 18px;
 		}
 
 		/* End of Card */
 
 		#frontCard {
 			z-index: 2;
+			animation-iteration-count: 0;
+			transform: rotate(0deg);
+			transition: 0.5s all ease-in-out;
+
+			background-color: white;
 		}
 
 		#middleCard {
 			z-index: 1;
-			transform: rotate(5deg);
+			animation-delay: 2s;
+			transform: translateY(-20px);
+			background-color: red;
+
 		}
 
 		#backCard {
 			z-index: 0;
-			transform: rotate(-3deg);
-		}
+			transform: translateY(-40px);
+			background-color: blue;
+		}		
 
 	</style>
 </head>
@@ -160,19 +186,19 @@
 
 					<!--Labels-->
 					<div class="nameLabel">
-						John Appleseed
+						Card 1
 					</div> <!--Closes nameLabel-->
 
 					<div class="descriptionLabel">
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 					</div> <!--Closes descriptionLabel-->
 
-					<button class="button likeButton">
-						Like
+					<button class="button interativeElement" id="dislikeButton" onclick="buttonClicked(this.id)">
+						❌
 					</button>
 
-					<button class="button dislikeButton">
-						Dislike
+					<button class="button interativeElement" id="likeButton" onclick="buttonClicked(this.id)">
+						😍
 					</button>
 				</div> <!--Closes card-->
 			</div> <!--Closes swipableCard-->
@@ -182,7 +208,7 @@
 
 					<!--Image-->
 					<div class="center roundedImage">
-						<img src="testImage.png" alt="friendImage">
+						<img class="friendImage" src="testImage.jpg" alt="friendImage">
 					</div> <!--Closes roundedImage-->
 
 					<!--Gender Symbol-->
@@ -190,19 +216,19 @@
 
 					<!--Labels-->
 					<div class="nameLabel">
-						John Appleseed
+						Card 2
 					</div> <!--Closes nameLabel-->
 
 					<div class="descriptionLabel">
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 					</div> <!--Closes descriptionLabel-->
 
-					<button class="button likeButton">
-						Like
+					<button class="button interativeElement" id="dislikeButton" onclick="buttonClicked(this.id)">
+						❌
 					</button>
 
-					<button class="button dislikeButton">
-						Dislike
+					<button class="button interativeElement" id="likeButton" onclick="buttonClicked(this.id)">
+						😍
 					</button>
 				</div> <!--Closes card-->
 			</div> <!--Closes swipableCard-->
@@ -211,8 +237,8 @@
 				<div class="center card">
 
 					<!--Image-->
-					<div class="center">
-						<img class="roundedImage" src="testImage.png" alt="friendImage">
+					<div class="center roundedImage">
+						<img class="friendImage" src="testImage.jpg" alt="friendImage">
 					</div> <!--Closes roundedImage-->
 
 					<!--Gender Symbol-->
@@ -220,19 +246,19 @@
 
 					<!--Labels-->
 					<div class="nameLabel">
-						John Appleseed
+						Card 3
 					</div> <!--Closes nameLabel-->
 
 					<div class="descriptionLabel">
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 					</div> <!--Closes descriptionLabel-->
 
-					<button class="button likeButton">
-						Like
+					<button class="button interativeElement" id="dislikeButton" onclick="buttonClicked(this.id)">
+						❌
 					</button>
 
-					<button class="button dislikeButton">
-						Dislike
+					<button class="button interativeElement" id="likeButton" onclick="buttonClicked(this.id)">
+						😍
 					</button>
 				</div> <!--Closes card-->
 			</div> <!--Closes swipableCard-->
@@ -244,5 +270,6 @@
 		</div> <!--Closes horizontalCell-->
 
 	</div> <!--Closes contentDiv-->
+	<script src="swipe.js"></script>
 </body>
 </html>
