@@ -1,0 +1,44 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+#header img {
+	width: 20%;
+	margin-left: 5%;
+	height: auto;
+}
+#header a{
+	display: block;
+	float: left;
+}
+#header{
+	position: relative;
+	background-image: url("pink_background.jpg");
+	background-size: cover;
+    background-position: center;
+}
+#buttons{
+	position:absolute;
+    top: 50%;
+    left: 70%
+}
+#login_button{
+	margin-left: 30px;
+}
+.clearfloat{
+	clear:both;
+}
+.user_avatar img{
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+}
+.user_avatar p{
+	text-align: center;
+	font-family: 'Dancing Script', cursive;
+	font-size: 2em;
+}
+.user_avatar{
+	padding-left: 5%;
+	padding-right: 5%;
+}
