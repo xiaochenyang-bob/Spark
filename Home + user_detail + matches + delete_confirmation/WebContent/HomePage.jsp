@@ -5,20 +5,23 @@
 Connection conn = null;     
 Statement st= null;      
 ResultSet rs= null;
-String searchString = "SELECT username, avatar FROM Users ORDER BY RAND();"; 
+String searchString = "SELECT id, username, avatar FROM Users ORDER BY RAND();"; 
 ArrayList<String> usernames = new ArrayList<String>();
 ArrayList<String> avatars = new ArrayList<String>();
+ArrayList<Integer> user_Ids = new ArrayList<Integer>();
 try{
 	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection("link to database");
+	conn = DriverManager.getConnection("jdbc:mysql://google/Spark?cloudSqlInstance=cs201-lab7:us-central1:cs201-spark&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=SparkUser&password=password");
 	st = conn.createStatement();
 	rs = st.executeQuery(searchString);
 	while (rs.next())
 	{
+		int user_id = rs.getInt("id");
 		String username = rs.getString("username");
 		String avatar = rs.getString("avatar");
 		usernames.add(username);
 		avatars.add(avatar);
+		user_Ids.add(user_id);
 	}
 }catch(SQLException sqle){
 	System.out.println(sqle.getMessage());
@@ -69,14 +72,22 @@ try{
 					  }
 						else
 						{
-							response.sendRedirect("SwipePage.jsp");
+							response.sendRedirect("SwipePage.html?user_id=" + session.getAttribute("user_id"));
 						}
 					%>
 					<div class = "clearfloat"></div>
 				</div>
 				<%
 				 for (int i = 0; i<usernames.size(); ++i)
-					 
+				 {
+			    %>
+			    	<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+					<!-- where database data comes in -->
+					<img src = <%= avatars.get(i) %> alt = <%=user_Ids.get(i) %> class = "user_image">
+					<p><%= usernames.get(i) %></p>
+					</div>
+			    <% 
+				 }	 
 				%>
 				<!-- code for testing the format -->
 				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
@@ -133,7 +144,7 @@ try{
 			{
 				user_images[i].onclick = function() {
 					let user_id = this.alt;
-					window.location.href = "user_detail.jsp?user_Id=" + user_id;
+					window.location.href = "user_detail.jsp?user_id=" + user_id;
 				}
 			}
 		</script>

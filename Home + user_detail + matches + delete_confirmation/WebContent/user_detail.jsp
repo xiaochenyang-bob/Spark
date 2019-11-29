@@ -12,9 +12,9 @@
 	int user_id = Integer.parseInt(request.getParameter("user_Id"));
 	try{
 		//Not sure why suddenly stop working
-		//Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
 		//to do
-		conn = DriverManager.getConnection("link to database");
+		conn = DriverManager.getConnection("jdbc:mysql://google/Spark?cloudSqlInstance=cs201-lab7:us-central1:cs201-spark&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=SparkUser&password=password");
 		ps= conn.prepareStatement(searchString);
 		ps.setInt(1, user_id);
 		rs = ps.executeQuery();
@@ -89,7 +89,7 @@
 					  }
 						else
 						{
-							response.sendRedirect("SwipePage.jsp");
+							response.sendRedirect("SwipePage.html?user_id=" + session.getAttribute("user_id"));
 						}
 					%>
 					<div class = "clearfloat"></div>

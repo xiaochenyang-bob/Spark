@@ -8,24 +8,26 @@
 	PreparedStatement ps2 = null;
 	ResultSet rs1= null;
 	ResultSet rs2 = null;
-	String searchString = "SELECT Users.username AS username, Users.avatar AS avatar FROM Matches" +
+	String searchString = "SELECT Users.id AS id, Users.username AS username, Users.avatar AS avatar FROM Matches" +
 			" JOIN Users ON Users.id = Matches.to WHERE from = ? ORDER BY match_date DESC;";
 	String findAvatarLink = "SELECT username, avatar FROM Users WHERE id = ? ;";
 	ArrayList<String> usernames = new ArrayList<String>();
 	ArrayList<String> avatars = new ArrayList<String>();
+	ArrayList<Integer> user_Ids = new ArrayList<Integer>();
 	String avatar_url = "";
 	String username = "";
+	//from user id.
 	int from_id = 0;
-	if (request.getParameter("user_Id") != null)
+	if (session.getAttribute("user_id") != null)
 	{
-		from_id = Integer.parseInt(request.getParameter("user_Id"));
+		from_id = (int)session.getAttribute("user_id");
 	}
 
 	try{
 		//not sure why not working
-		//Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
 		//to do
-		conn = DriverManager.getConnection("link to database");
+		conn = DriverManager.getConnection("jdbc:mysql://google/Spark?cloudSqlInstance=cs201-lab7:us-central1:cs201-spark&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=SparkUser&password=password");
 		ps1= conn.prepareStatement(searchString);
 		ps2 = conn.prepareStatement(findAvatarLink);
 		ps1.setInt(1, from_id);
@@ -36,6 +38,7 @@
 		{
 			usernames.add(rs1.getString("username"));
 			avatars.add(rs1.getString("avatar"));
+			user_Ids.add(rs1.getInt("id"));
 		}
 		if (rs2.next())
 		{
@@ -155,9 +158,9 @@
 		    {
 		    %>
 		    	<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-					<img src = "<%= avatars.get(i) %>" alt = "<%= i %>" class = "liked_profiles">
+					<img src = "<%= avatars.get(i) %>" alt = "<%= user_Ids.get(i) %>" class = "liked_profiles">
 					<p><%= usernames.get(i) %></p>
-					 <button type="button" class="btn btn-danger" class = "unlike_button" onclick = "location.href = 'delete_confirmation.jsp?/username=' + '<%= usernames.get(i) %>'" >Unlike</button>
+					 <button type="button" class="btn btn-danger" class = "unlike_button" onclick = "location.href = 'delete_confirmation.jsp?from_id=' + <%= from_id %> + '&to_id' + <%= user_Ids.get(i) %>" >Unlike</button>
 				</div>
 		    <%
 		    }
@@ -166,7 +169,7 @@
 		    <div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
 					<img src = "default_avatar.png" alt = "1"  class = "liked_profiles">
 					<p>Liked User</p>
-				    <button type="button" class="btn btn-danger" class = "unlike_button" onclick = "location.href = 'delete_confirmation.jsp?/username=' + 'likedUser'">Unlike</button>
+				    <button type="button" class="btn btn-danger" class = "unlike_button" onclick = "location.href = 'delete_confirmation.jsp?from_id=1&to_id=2'">Unlike</button>
 			</div>
 			<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
 					<img src = "default_avatar.png" alt = "1" class = "liked_profiles">
@@ -208,7 +211,7 @@
 	</div>
 	<script>
 	document.querySelector("#discover_button").onclick = function(){
-		window.location.href = "SwipPage.jsp";
+		window.location.href = "SwipPage.html?user_id=" + <%= from_id %>;
 	}
 	document.querySelector("#premium_button").onclick = function(){
 		window.location.href = "open_premium.jsp?user_id=" + <%= from_id%>;
@@ -217,13 +220,12 @@
 		window.location.href = "LogOut";
 	}
 	let user_profiles = document.querySelectorAll(".liked_profiles");
-	console.log(document.querySelector(".liked_profiles").nextElementSibling.innerHTML);
 	for (let i = 0; i < user_profiles.length; ++i)
 	{
 		user_profiles[i].onclick = function(){
-			let to_username = this.nextElementSibling.innerHTML;
+			let to_id = this.alt;
 			<%-- window.location.href = "chat.jsp?from_user=" + <%= username %> + "to_user=" + to_username; --%>
-			window.location.href = "chat.jsp?from_user=Username&to_user=" + to_username;
+			window.location.href = "chat?usera=" + <%= from_id %> + "&userb=" + to_id;
 		}
 	} 
     </script>
