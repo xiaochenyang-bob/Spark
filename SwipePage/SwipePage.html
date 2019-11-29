@@ -38,25 +38,11 @@
 			margin: auto;
 		}
 
-		@keyframes wobble {			
-			100% { transform: rotate(3deg); }
-		}
-
 		.swipableCard {
 			position: absolute;
 			background-color: white;
 			border-radius: 15px;
 			box-shadow: 0px 0px 15px rgb(150, 150, 150);
-			transform: rotate(-3deg);
-
-			/*
-			animation-name: wobble;
-			animation-duration: 3s;
-			animation-direction: alternate;
-  			animation-iteration-count: infinite;
-  			animation-timing-function: ease-in-out;
-  			transition: 1s all ease-out;
-  			*/
 		}
 
 		.card {
@@ -132,29 +118,6 @@
 		}
 
 		/* End of Card */
-
-		#frontCard {
-			z-index: 2;
-			animation-iteration-count: 0;
-			transform: rotate(0deg);
-			transition: 0.5s all ease-in-out;
-
-			background-color: white;
-		}
-
-		#middleCard {
-			z-index: 1;
-			animation-delay: 2s;
-			transform: translateY(-20px);
-			background-color: red;
-
-		}
-
-		#backCard {
-			z-index: 0;
-			transform: translateY(-40px);
-			background-color: blue;
-		}		
 
 	</style>
 </head>
@@ -270,6 +233,7 @@
 		</div> <!--Closes horizontalCell-->
 
 	</div> <!--Closes contentDiv-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="swipePage.js"></script>
 </body>
 </html>
