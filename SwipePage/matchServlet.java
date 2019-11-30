@@ -39,7 +39,7 @@ public class matchServlet extends HttpServlet {
 		
 		// FIXME: The SQL Query
 		try {
-			rs = st.execute("INSERT INTO Matches (f, t) VALUES (0, 2)");
+			rs = st.execute("INSERT INTO Matches (f, t) VALUES (0, 3)");
 		} catch (SQLException e) {
 			System.out.println("Something went wrong in the database execution.");
 		}

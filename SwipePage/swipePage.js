@@ -14,18 +14,18 @@ class User {
  */
 function fetchUsers() {
 	// TODO: This is incomplete.
-	var user1 = new User("John Appleseed", "male", "Lorem Ipsum.", "testImage.jpg");
-	let user2 = new User("User 2", "female", "Lorem Ipsum.", "testImage.jpg");
-	let user3 = new User("User 3", "male", "Lorem Ipsum.", "testImage.jpg");
-	let user4 = new User("User 4", "female", "Lorem Ipsum.", "testImage.jpg");
-	let user5 = new User("User 5", "male", "Lorem Ipsum.", "testImage.jpg");
-	let user6 = new User("User 6", "female", "Lorem Ipsum.", "testImage.jpg");
-	let user7 = new User("User 7", "male", "Lorem Ipsum.", "testImage.jpg");
-	let user8 = new User("User 8", "female", "Lorem Ipsum.", "testImage.jpg");
-	let user9 = new User("User 9", "male", "Lorem Ipsum.", "testImage.jpg");
-	let user10 = new User("User 10", "female", "Lorem Ipsum.", "testImage.jpg");
 
-	let allUsers = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10];
+	let user2 = new User("Bob",  "male", "The Best Player.", "2.jpg");
+	let user3 = new User("Josh",  "male", "Unbelievably good.", "3.jpg");
+	let user4 = new User("Johnny", "male","Best in the world.", "4.jpg");
+	let user5 = new User("Kevin",  "male", "How's that?", "5.jpg");
+	let user6 = new User("Selina", "female", "2nd best in the world.", "6.jpg");
+	let user7 = new User("Kate", "female", "Who else can be better?", "7.jpg");
+	let user8 = new User("Trina", "female", "This is defintely the best person.", "8.jpg");
+	let user9 = new User("Jony", "male", "The great designer.", "9.jpg");
+	let user10 = new User("Tim", "male", "The money maker of all time.", "10.jpg");
+
+	let allUsers = [user2, user3, user4, user5, user6, user7, user8, user9, user10];
 
 	return allUsers;
 
