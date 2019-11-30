@@ -38,6 +38,20 @@
 			margin: auto;
 		}
 
+		#notificationButton {
+			border: none;
+			margin-top: 200px;
+			width: 120px;
+			height: 40px;
+			background-color: pink;
+			color: white;
+			border-radius: 40px;
+			font-size: 15px;
+			cursor: pointer;
+			transition: 0.3s all;
+			display: none;
+		}
+
 		.swipableCard {
 			position: absolute;
 			background-color: white;
@@ -132,6 +146,9 @@
 	<div id="contentDiv">
 
 		<div class="horizontalCell">
+			<form action="matchServlet">
+				<input type="submit" id="notificationButton" class="interativeElement" value="New Match!">
+			</form>
 			
 		</div> <!--Closes horizontalCell-->
 

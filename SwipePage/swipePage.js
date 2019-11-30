@@ -98,6 +98,13 @@ function buttonClicked(id) {
 		fetchUsers();
 	}
 
+	// FIXME: Hardcode. Adds new match after 3 seconds
+	if (User.currentUserIndex === 3) {
+		setTimeout(function() {
+			document.getElementById("notificationButton").style.display = "inline-block";
+		}, 3000);
+	}
+
 	// Animates the front card
 	let button = document.getElementById(id);
 	switch (id) {
