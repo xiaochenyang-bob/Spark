@@ -38,6 +38,12 @@ public class matchServlet extends HttpServlet {
 		establishConnection();
 		
 		// FIXME: The SQL Query
+		try {
+			rs = st.execute("INSERT INTO Matches (f, t) VALUES (0, 2)");
+		} catch (SQLException e) {
+			System.out.println("Something went wrong in the database execution.");
+		}
+		
 		
 		// Redirect to Matches.jsp
 		response.sendRedirect(request.getContextPath() + "/Matches.jsp");

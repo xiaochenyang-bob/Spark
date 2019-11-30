@@ -98,11 +98,11 @@ function buttonClicked(id) {
 		fetchUsers();
 	}
 
-	// FIXME: Hardcode. Adds new match after 3 seconds
+	// FIXME: Hardcode. Adds new match after 0.1 seconds
 	if (User.currentUserIndex === 3) {
 		setTimeout(function() {
 			document.getElementById("notificationButton").style.display = "inline-block";
-		}, 3000);
+		}, 100);
 	}
 
 	// Animates the front card
