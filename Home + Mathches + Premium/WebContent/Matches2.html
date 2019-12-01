@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Matches</title>
+		<title>Matches Page</title>
 		<link rel="stylesheet"
 		 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 		 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
@@ -126,6 +126,13 @@
 		#dislikeButton {
 			font-size: 18px;
 		}
+
+		#title {
+			width: 100%;
+			margin-left: 600px;
+			font-size: 35px;
+			margin-top: 50px;
+		}
 	</style>
 	</head>
 	<body>
@@ -136,9 +143,13 @@
 						<img src = "spark_logo1.png" alt = "spark_logo">
 					</a>
 					<div id = "buttons">
-						<button type="button" class="btn btn-primary" id = "register_button">Register</button>
-						<button type="button" class="btn btn-primary" id = "login_button">Login</button>
+						<button type="button" class="btn btn-primary" id = "register_button">Account</button>
+						<button type="button" class="btn btn-primary" id = "login_button">Login/Logout</button>
 					</div>
+					<div class = "clearfloat"></div>
+				</div>
+				<div id="title">
+					<p>Your Matches</p>
 					<div class = "clearfloat"></div>
 				</div>
 			    	<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
@@ -147,7 +158,7 @@
 					<p class="username">User</p>
 				</div>
 				<!-- code for testing the format -->
-				<div id="card1" class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
 				<!-- where database data comes in -->
 					<img src = "default_avatar.png" alt = "1" class = "user_image">
 					<p class="username">User</p>
@@ -159,27 +170,7 @@
 				</div>
 				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
 				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "3" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "4" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "5" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "6" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "7" class = "user_image">
+					<img src = "default_avatar.png" alt = "2" class = "user_image">
 					<p class="username">User</p>
 				</div>
 			</div>
@@ -193,17 +184,17 @@
 					this.imageName = imageName;
 				}
 			}
-			let user2 = new User("Bob",  "male", "The Best Player.", "2.jpg");
-			let user3 = new User("Josh",  "male", "Unbelievably good.", "3.jpg");
-			let user4 = new User("Johnny", "male","Best in the world.", "4.jpg");
-			let user5 = new User("Kevin",  "male", "How's that?", "5.jpg");
-			let user6 = new User("Selina", "female", "2nd best in the world.", "6.jpg");
-			let user7 = new User("Kate", "female", "Who else can be better?", "7.jpg");
-			let user8 = new User("Trina", "female", "This is defintely the best person.", "8.jpg");
-			let user9 = new User("Jony", "male", "The great designer.", "9.jpg");
-			let user10 = new User("Tim", "male", "The money maker of all time.", "10.jpg");
+			let user1 = new User("Bob",  "male", "The Best Player.", "2.jpg");
+	let user2 = new User("Josh",  "male", "Unbelievably good.", "3.jpg");
+	let user3 = new User("Johnny", "male","Best in the world.", "4.jpg");
+	let user4 = new User("Kevin",  "male", "How's that?", "5.jpg");
+	let user5 = new User("Selina", "female", "2nd best in the world.", "6.jpg");
+	let user6 = new User("Kate", "female", "Who else can be better?", "7.jpg");
+	let user7 = new User("Trina", "female", "This is defintely the best person.", "8.jpg");
+	let user8 = new User("Jony", "male", "The great designer.", "9.jpg");
+	let user9 = new User("Tim", "male", "The money maker of all time.", "10.jpg");
 
-			let allUsers = [user2, user3, user4, user5, user6, user7, user8, user9, user10];
+	let allUsers = [user1, user2, user3, user4, user5, user6, user7, user8, user9];
 
 			document.querySelector("#register_button").onclick = function(){
 				window.location.href = "register.jsp";
@@ -214,20 +205,33 @@
 			let user_images = document.querySelectorAll(".user_image");
 			for (let i = 0; i<user_images.length; i++)
 			{
-				user_images[i].onclick = function() {
+				if (i != 3) {
+					user_images[i].onclick = function() {
 					let user_id = this.alt;
-					window.location.href = "login.jsp";
+					window.location.href = "chat?usera=1&userb=" + (i + 4);
+					}
+				} else {
+					user_images[i].onclick = function() {
+					let user_id = this.alt;
+					window.location.href = "chat?usera=1&userb=" + 3;
+					}
 				}
+				
 			}
 
 			function updateUI() {
 				let cards = document.getElementsByClassName("user_avatar");
-				for (let i = 0; i < cards.length; i++) {
+				for (let i = 4; i < 7; i++) {
 					let user = allUsers[i];
-					let card = cards[i];
+					let card = cards[i - 4];
 					card.getElementsByClassName("username")[0].innerHTML = user.username;
 					card.getElementsByClassName("user_image")[0].src = user.imageName;
 				}
+
+				let user = user3;
+				let card = cards[3];
+				card.getElementsByClassName("username")[0].innerHTML = user.username;
+				card.getElementsByClassName("user_image")[0].src = user.imageName;
 			}
 
 			updateUI();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Matches</title>
+		<title>Premium</title>
 		<link rel="stylesheet"
 		 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 		 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
@@ -126,6 +126,12 @@
 		#dislikeButton {
 			font-size: 18px;
 		}
+		#title {
+			width: 100%;
+			margin-left: 550px;
+			font-size: 35px;
+			margin-top: 50px;
+		}
 	</style>
 	</head>
 	<body>
@@ -136,9 +142,14 @@
 						<img src = "spark_logo1.png" alt = "spark_logo">
 					</a>
 					<div id = "buttons">
-						<button type="button" class="btn btn-primary" id = "register_button">Register</button>
-						<button type="button" class="btn btn-primary" id = "login_button">Login</button>
+						<button type="button" class="btn btn-primary" id = "register_button">Account</button>
+						<button type="button" class="btn btn-primary" id = "login_button">Login/Logout</button>
 					</div>
+					<div class = "clearfloat"></div>
+				</div>
+
+				<div id="title">
+					<p>People Who Liked you</p>
 					<div class = "clearfloat"></div>
 				</div>
 			    	<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
@@ -147,41 +158,12 @@
 					<p class="username">User</p>
 				</div>
 				<!-- code for testing the format -->
-				<div id="card1" class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
 				<!-- where database data comes in -->
 					<img src = "default_avatar.png" alt = "1" class = "user_image">
 					<p class="username">User</p>
 				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "2" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "3" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "4" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "5" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "6" class = "user_image">
-					<p class="username">User</p>
-				</div>
-				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
-				<!-- where database data comes in -->
-					<img src = "default_avatar.png" alt = "7" class = "user_image">
-					<p class="username">User</p>
-				</div>
+
 			</div>
 		</div>
 		<script>
@@ -216,15 +198,15 @@
 			{
 				user_images[i].onclick = function() {
 					let user_id = this.alt;
-					window.location.href = "login.jsp";
+					window.location.href = "chat?usera=1&userb=" + (i + 7);
 				}
 			}
 
 			function updateUI() {
 				let cards = document.getElementsByClassName("user_avatar");
-				for (let i = 0; i < cards.length; i++) {
+				for (let i = 7; i < 9; i++) {
 					let user = allUsers[i];
-					let card = cards[i];
+					let card = cards[i - 7];
 					card.getElementsByClassName("username")[0].innerHTML = user.username;
 					card.getElementsByClassName("user_image")[0].src = user.imageName;
 				}
