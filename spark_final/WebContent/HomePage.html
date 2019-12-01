@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home Page</title>
+		<link rel="stylesheet"
+		 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+		 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		 crossorigin="anonymous">
+		 <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+		 <link rel="stylesheet" type="text/css" href="style_gavin.css">
+		 <script src="https://kit.fontawesome.com/4abbf48612.js" crossorigin="anonymous"></script>
+		<style>
+		body {
+			padding: 0px;
+			margin: 0px;
+		}
+		#contentDiv {
+			margin: 100px auto 50px auto;	
+			height: 700px;	
+		}
+
+		.horizontalCell {
+			width: 33%;
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
+			margin: 0px auto;
+		}
+
+		/* Start of Card */
+
+		.center {
+			text-align: center;
+			margin: auto;
+		}
+
+		#notificationButton {
+			border: none;
+			margin-top: 200px;
+			width: 120px;
+			height: 40px;
+			background-color: pink;
+			color: white;
+			border-radius: 40px;
+			font-size: 15px;
+			cursor: pointer;
+			transition: 0.3s all;
+			display: none;
+		}
+
+		.swipableCard {
+			position: absolute;
+			background-color: white;
+			border-radius: 15px;
+			box-shadow: 0px 0px 15px rgb(150, 150, 150);
+		}
+
+		.card {
+			width: 350px;
+			height: 550px;
+			padding-top: 5px;
+		}
+
+		.roundedImage {
+			width: 200px;
+			height: 200px;
+			border-radius: 200px;
+			border: 4px solid lightgray;
+			overflow: hidden;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+
+		.friendImage {
+			width: 200px;
+			height: 200px;
+		}
+
+		.genderSymbol {
+			margin-top: 30px;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+		}
+
+		.nameLabel {
+			margin-top: 30px;
+			font-family: Helvetica, sans-serif;
+			font-size: 30px;
+			font-weight: bold;
+			display: inline-block;
+		}
+
+		.descriptionLabel {
+			margin-top: 30px;
+			font-family: Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: normal;
+			padding: 0px 50px;
+		}
+
+		.interativeElement:hover {
+			transform: scale(1.1);
+			background-color: pink;
+		}
+
+		.button {
+			margin: 30px 50px;
+			font-family: Helvetica, sans-serif;
+			font-weight: bold;
+			font-size: 25px;
+			border-radius: 30px;
+			box-shadow: 0px 0px 10px rgb(220, 220, 220);
+			background-color: white;
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			vertical-align: top;
+			border-style: none;
+			color: white;
+			cursor: pointer;
+			transition: 0.17s all ease-in-out;
+			
+		}
+
+		#dislikeButton {
+			font-size: 18px;
+		}
+	</style>
+	</head>
+	<body>
+		<div class = "container-fluid">
+			<div class = "row">
+				<div id = "header" class = "col col-12">
+					<a href = "HomePage.html">
+						<img src = "spark_logo1.png" alt = "spark_logo">
+					</a>
+					<div id = "buttons">
+						<button type="button" class="btn btn-primary" id = "register_button">Start Swipe!</button>
+						<button type="button" class="btn btn-primary" id = "login_button">Login/Logout</button>
+					</div>
+					<div class = "clearfloat"></div>
+				</div>
+			    	<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "1" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<!-- code for testing the format -->
+				<div id="card1" class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "1" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "2" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "3" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "4" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "5" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "6" class = "user_image">
+					<p class="username">User</p>
+				</div>
+				<div class = "col col-lg-3 col-md-4 col-sm-6 user_avatar">
+				<!-- where database data comes in -->
+					<img src = "default_avatar.png" alt = "7" class = "user_image">
+					<p class="username">User</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			class User {
+				constructor(username, gender, description, imageName) {
+					this.username = username;
+					this.gender = gender;
+					this.description = description;
+					this.imageName = imageName;
+				}
+			}
+			let user2 = new User("Bob",  "male", "The Best Player.", "2.jpg");
+			let user3 = new User("Josh",  "male", "Unbelievably good.", "3.jpg");
+			let user4 = new User("Johnny", "male","Best in the world.", "4.jpg");
+			let user5 = new User("Kevin",  "male", "How's that?", "5.jpg");
+			let user6 = new User("Selina", "female", "2nd best in the world.", "6.jpg");
+			let user7 = new User("Kate", "female", "Who else can be better?", "7.jpg");
+			let user8 = new User("Trina", "female", "This is defintely the best person.", "8.jpg");
+			let user9 = new User("Jony", "male", "The great designer.", "9.jpg");
+			let user10 = new User("Tim", "male", "The money maker of all time.", "10.jpg");
+
+			let allUsers = [user2, user3, user4, user5, user6, user7, user8, user9, user10];
+
+			document.querySelector("#register_button").onclick = function(){
+				window.location.href = "SwipePage.html";
+			}
+			document.querySelector("#login_button").onclick = function() {
+				window.location.href = "LoginPage.jsp";
+			}
+			let user_images = document.querySelectorAll(".user_image");
+			for (let i = 0; i<user_images.length; i++)
+			{
+				user_images[i].onclick = function() {
+					let user_id = this.alt;
+					window.location.href = "LoginPage.jsp";
+				}
+			}
+
+			function updateUI() {
+				let cards = document.getElementsByClassName("user_avatar");
+				for (let i = 0; i < cards.length; i++) {
+					let user = allUsers[i];
+					let card = cards[i];
+					card.getElementsByClassName("username")[0].innerHTML = user.username;
+					card.getElementsByClassName("user_image")[0].src = user.imageName;
+				}
+			}
+
+			updateUI();
+		</script>
+	</body>
+</html>
