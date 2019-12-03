@@ -1,3 +1,6 @@
+<%@page import="java.util.*, java.io.*, java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -136,9 +139,22 @@
 						<img src = "spark_logo1.png" alt = "spark_logo">
 					</a>
 					<div id = "buttons">
-					
-						<button type="button" class="btn btn-primary" id = "register_button">Start Swipe!</button>
-						<button type="button" class="btn btn-primary" id = "login_button">Login/Logout</button>
+					<% 
+					if (session.getAttribute("username") == null)
+					{
+					%>
+						<button type="button" class="btn btn-primary" id = "register_button">Register</button>
+						<button type="button" class="btn btn-primary" id = "login_button">Login</button>
+					<%
+					}
+					else
+					{
+					%>
+						<button type="button" class="btn btn-primary" id = "swipe_button">Swipe now!</button>
+						<button type="button" class="btn btn-primary" id = "logout_button">LogOut</button>
+					<%
+					}
+					%>
 					</div>
 					<div class = "clearfloat"></div>
 				</div>
@@ -206,11 +222,14 @@
 
 			let allUsers = [user2, user3, user4, user5, user6, user7, user8, user9, user10];
 
-			document.querySelector("#register_button").onclick = function(){
+			document.querySelector("#swipe_button").onclick = function(){
 				window.location.href = "SwipePage.html";
 			}
 			document.querySelector("#login_button").onclick = function() {
 				window.location.href = "LoginPage.jsp";
+			}
+			document.querySelector("#logout_button").onclick = function() {
+				window.location.href = "LoginOutServlet";
 			}
 			let user_images = document.querySelectorAll(".user_image");
 			for (let i = 0; i<user_images.length; i++)
@@ -220,7 +239,6 @@
 					window.location.href = "LoginPage.jsp";
 				}
 			}
-
 			function updateUI() {
 				let cards = document.getElementsByClassName("user_avatar");
 				for (let i = 0; i < cards.length; i++) {

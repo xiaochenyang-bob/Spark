@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Entered Log-in Servlet" ); 
 		
 		HttpSession session = request.getSession();
+		
 		String error ="";
 		String next = "/Matches.html";
 		String username = request.getParameter("usernameLogin");
@@ -74,6 +75,7 @@ public class LoginServlet extends HttpServlet {
 		        dispatch.forward(request, response);
 		        return;
 			}
+			session.setAttribute("username", username);
 		}
 		catch(ClassNotFoundException | SQLException sqle) {
 			sqle.printStackTrace();;
